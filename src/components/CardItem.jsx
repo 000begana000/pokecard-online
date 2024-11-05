@@ -1,3 +1,5 @@
+import { currencyFormatter } from "../util/formatting";
+
 export default function CardItem({ card }) {
   return (
     <li className="card-item">
@@ -5,7 +7,7 @@ export default function CardItem({ card }) {
       <div>
         <h3>{card.name}</h3>
         <p className="card-item-price">
-          {card.cardmarket.prices.averageSellPrice}
+          {currencyFormatter.format(card.cardmarket.prices.averageSellPrice)}
         </p>
       </div>
       <p className="card-item-actions">
