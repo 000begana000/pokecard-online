@@ -78,9 +78,7 @@ export function CartContextProvider({ children }) {
   };
 
   return (
-    <createContext.Provider value={cartContext}>
-      {children}
-    </createContext.Provider>
+    <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
   );
 }
 
