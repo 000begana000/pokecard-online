@@ -7,26 +7,22 @@ const API_KEY = "41d2dff6-e2ac-4365-ba97-8c792f3cd280";
 export default function Cards() {
   const [loadedCards, setLoadedCards] = useState();
 
+  // fetching pokemon card API
   useEffect(() => {
-    try {
-      async function fetchCards() {
-        const response = await fetch("https://api.pokemontcg.io/v2/cards", {
-          headers: {
-            "X-Api-Key": API_KEY,
-          },
-        });
-        if (!response.ok) {
-          //...
-        }
-        const cards = await response.json();
-        setLoadedCards(cards.data);
+    async function fetchCards() {
+      const response = await fetch("https://api.pokemontcg.io/v2/cards", {
+        headers: {
+          "X-Api-Key": API_KEY,
+        },
+      });
+      if (!response.ok) {
+        //...
       }
-
-      fetchCards();
-      console.log(loadedCards);
-    } catch (error) {
-      console.log(error);
+      const cards = await response.json();
+      setLoadedCards(cards.data);
     }
+
+    fetchCards();
   }, []);
 
   return (
