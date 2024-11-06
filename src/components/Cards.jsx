@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import CardItem from "./CardItem";
 
-const API_KEY = "41d2dff6-e2ac-4365-ba97-8c792f3cd280";
+const API_KEY = process.env.API_KEY;
 
 export default function Cards() {
   const [loadedCards, setLoadedCards] = useState();
