@@ -1,15 +1,24 @@
 import { useContext } from "react";
 
+import CartContext from "../store/CartContext.jsx";
+import UserProgressContext from "../store/UserProgressContext.jsx";
+
 import logoImg from "../assets/logo.png";
 import Button from "./UI/Button";
-import CartContext from "../store/CartContext.jsx";
 
 export default function Header() {
   const cartCtx = useContext(CartContext);
+  const userProgressCtx = useContext(UserProgressContext);
 
+  // total quantity of items
   const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
     return totalNumberOfItems + item.quantity;
   }, 0);
+
+  // open Cart modal
+  function handleShowCart() {
+    userProgressCtx.showCart();
+  }
 
   return (
     <header id="main-header">
@@ -18,7 +27,7 @@ export default function Header() {
         <h1>Pokecard Online</h1>
       </div>
       <nav>
-        <Button>Cart({totalCartItems})</Button>
+        <Button onClick={handleShowCart}>Cart({totalCartItems})</Button>
       </nav>
     </header>
   );
