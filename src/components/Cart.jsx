@@ -17,7 +17,9 @@ export default function Cart() {
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
-          <li key={item.id}>name - quantity</li>
+          <li key={item.id}>
+            {item.name} - {item.quantity}
+          </li>
         ))}
       </ul>
       <p className="cart-total">{currencyFormatter.format(totalPrice)}</p>
