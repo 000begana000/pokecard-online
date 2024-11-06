@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import CardItem from "./CardItem";
 
-const API_KEY = process.env.API_KEY;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function Cards() {
   const [loadedCards, setLoadedCards] = useState();
@@ -12,7 +12,7 @@ export default function Cards() {
     async function fetchCards() {
       const response = await fetch("https://api.pokemontcg.io/v2/cards", {
         headers: {
-          "X-Api-Key": API_KEY,
+          "X-Api-Key": apiKey,
         },
       });
       if (!response.ok) {
