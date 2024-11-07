@@ -18,7 +18,6 @@ export default function Header() {
   // open Cart modal
   function handleShowCart() {
     userProgressCtx.showCart();
-    console.log(userProgressCtx.progress);
   }
 
   return (

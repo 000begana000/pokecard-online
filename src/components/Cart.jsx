@@ -39,6 +39,7 @@ export default function Cart() {
       <p className="cart-total">{currencyFormatter.format(totalPrice)}</p>
       <p className="modal-actions">
         <Button onClick={handleHideCart}>Close</Button>
+        {/* hide Go To Checkout button when there is no item in the cart */}
         {cartCtx.items.length > 0 && <Button>Go To Checkout</Button>}
       </p>
     </Modal>
