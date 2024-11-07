@@ -3,6 +3,7 @@ import { UserProgressContextProvider } from "./store/UserProgressContext.jsx";
 
 import Header from "./components/Header";
 import Cards from "./components/Cards";
+import Cart from "./components/Cart.jsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <UserProgressContextProvider>
           <Header />
           <Cards />
+          <Cart />
         </UserProgressContextProvider>
       </CartContextProvider>
     </>

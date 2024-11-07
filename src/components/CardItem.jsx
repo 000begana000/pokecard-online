@@ -10,7 +10,6 @@ export default function CardItem({ card }) {
 
   function handleAddCardToCart() {
     cartCtx.addItem(card);
-    console.log(card);
   }
 
   return (
