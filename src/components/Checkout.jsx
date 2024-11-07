@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 // context
 import CartContext from "../store/CartContext";
+import UserProgressContext from "../store/UserProgressContext.jsx";
 
 // components
 import Modal from "./UI/Modal.jsx";
@@ -10,6 +11,7 @@ import Button from "./UI/Button.jsx";
 
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
+  const userProgressCtx = useContext(UserProgressContext);
 
   // total price
   const cartTotal = cartCtx.items.reduce(
@@ -17,8 +19,12 @@ export default function Checkout() {
     0
   );
 
+  function handleCloseCheckout() {
+    userProgressCtx.hideCheckout();
+  }
+
   return (
-    <Modal>
+    <Modal open={userProgressCtx.progress === "checkout"}>
       <form action="">
         <h2>Checkout</h2>
         <p>Total Price: {cartTotal}</p>
@@ -30,7 +36,9 @@ export default function Checkout() {
           <Input label="City" type="text" id="city" />
         </div>
         <p className="modal-actions">
-          <Button type="button">Close</Button>
+          <Button type="button" onClick={handleCloseCheckout}>
+            Close
+          </Button>
           <Button>Submit Order</Button>
         </p>
       </form>
