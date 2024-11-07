@@ -6,6 +6,7 @@ import { currencyFormatter } from "../util/formatting.js";
 
 import Modal from "./UI/Modal.jsx";
 import Button from "./UI/Button.jsx";
+import CartItem from "./CartItem.jsx";
 
 export default function Cart() {
   const cartCtx = useContext(CartContext);
@@ -25,9 +26,14 @@ export default function Cart() {
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
-          <li key={item.id}>
-            {item.name} - {item.quantity}
-          </li>
+          <CartItem
+            key={item.id}
+            name={item.name}
+            price={item.price}
+            quantity={item.quantity}
+            onDecrease={() => cartCtx.removeItem(item.id)}
+            onIncrease={() => cartCtx.addItem(item)}
+          />
         ))}
       </ul>
       <p className="cart-total">{currencyFormatter.format(totalPrice)}</p>

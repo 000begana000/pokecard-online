@@ -24,7 +24,11 @@ function cartReducer(state, action) {
       updatedItems[existingItemIndex] = updatedItem;
       // else push item into items state with new prop - quntity: 1
     } else {
-      updatedItems.push({ ...action.item, quantity: 1 });
+      updatedItems.push({
+        ...action.item,
+        price: action.item.cardmarket.prices.averageSellPrice,
+        quantity: 1,
+      });
     }
 
     return { ...state, items: updatedItems };
