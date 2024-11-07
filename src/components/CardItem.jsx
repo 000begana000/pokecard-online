@@ -1,8 +1,18 @@
+import { useContext } from "react";
+import CartContext from "../store/CartContext";
+
 import { currencyFormatter } from "../util/formatting";
 
 import Button from "./UI/Button";
 
 export default function CardItem({ card }) {
+  const cartCtx = useContext(CartContext);
+
+  function handleAddCardToCart() {
+    cartCtx.addItem(card);
+    console.log(card);
+  }
+
   return (
     <li className="card-item">
       <img src={card.images.small} alt={card.name} />
@@ -13,7 +23,7 @@ export default function CardItem({ card }) {
         </p>
       </div>
       <p className="card-item-actions">
-        <Button>Add To Cart</Button>
+        <Button onClick={handleAddCardToCart}>Add To Cart</Button>
       </p>
     </li>
   );
